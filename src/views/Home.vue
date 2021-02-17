@@ -27,20 +27,20 @@
             </td>
           </tr>
           <tr>
-            <th class="w-100 p-3">Year</th>
-            <th class="w-100 p-3">Grade</th>
-            <th class="w-100 p-3">Subject</th>
-            <th class="w-100 p-3">Exam Language</th>
-            <th class="w-100 p-3">Gender</th>
-            <th class="w-100 p-3">Francophone</th>
-            <th class="w-100 p-3">French Immersion</th>
-            <th class="w-100 p-3">ELL</th>
-            <th class="w-100 p-3">Indigenous</th>
+            <th class="p-3">Year</th>
+            <th class="p-3">Grade</th>
+            <th class="p-3">Subject</th>
+            <th class="p-3">Exam Language</th>
+            <th class="p-3">Gender</th>
+            <th class="p-3">Francophone</th>
+            <th class="p-3">French Immersion</th>
+            <th class="p-3">ELL</th>
+            <th class="p-3">Indigenous</th>
           </tr>
           <tr>
 
-            <td class="w-100 p-3">
-              <select v-model="year">
+            <td class="p-3">
+              <select v-model="year" class="form-control">
                 <option v-for="option in yearOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -48,8 +48,8 @@
 
             </td>
 
-            <td class="w-100 p-3">
-              <select v-model="grade">
+            <td class="p-3">
+              <select v-model="grade" class="form-control">
                 <option v-for="option in gradeOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -57,48 +57,49 @@
             </td>
 
 
-            <td class="w-100 p-3">
-              <select v-model="subject">
+            <td class="p-3">
+              <select v-model="subject" class="form-control">
                 <option v-for="option in subjectOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select>
             </td>
 
-            <td class="w-100 p-3">
-              <select v-model="examLanguage">
+            <td class="p-3">
+              <select v-model="examLanguage" class="form-control">
                 <option v-for="option in examLanguageOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="w-100 p-3">
-              <select v-model="gender">
+            <td class="p-3">
+              <select v-model="gender" class="form-control">
                 <option v-for="option in genderOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="w-100 p-3"> <select v-model="francophone">
+            <td class="p-3"> <select v-model="francophone" class="form-control">
+              
                 <option v-for="option in francophoneOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select>
             </td>
 
-            <td class="w-100 p-3"> <select v-model="frenchImmersion">
+            <td class="p-3"> <select v-model="frenchImmersion" class="form-control">
                 <option v-for="option in frenchImmersionOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="w-100 p-3"> <select v-model="ell">
+            <td class="p-3"> <select v-model="ell" class="form-control">
                 <option v-for="option in ellOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="w-100 p-3"> <select v-model="indigenous">
+            <td class="p-3"> <select v-model="indigenous" class="form-control">
                 <option v-for="option in indigenousOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -359,13 +360,11 @@
         this.cSelectedResponse = "C Responses";
       },
       saveSelectionAndReset(e) {
-        console.log("select")
         let val = e;
         if (val) {
           this.school = val;
         }
         e = "";
-        console.log(this.school);  
       }
     }
   }
