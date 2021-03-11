@@ -3,43 +3,33 @@
     <h1>Foundation Skills Assesment Reports</h1>
     <form action="" method="GET" @submit.prevent="search">
 
-    <b-form-input list="my-list-id" @input="saveSelectionAndReset"></b-form-input>
-
-
-
-
+    <b-form-input list="my-list-id" @change="saveSelectionAndReset" @focus="clearSchool" v-model="school"></b-form-input>
+    <a href="#" @click="clearSchool" class="clear-button">Clear</a>
       <table class="uk-table uk-table-small filter">
         <tbody>
           <tr>
-            <th colspan="100">
-              School or District
-            </th>
-          </tr>
-          <tr>
-            <td colspan="100">
-              
+            <td>
               <datalist id="my-list-id">
-   
-                <option>Manual Option</option>
-                <option v-for="scool in schoolList" v-bind:key="scool.school_or_district">{{ scool.school_or_district }}</option>
-
+                <option>Select a District</option>
+                <option v-for="school in schoolList" v-bind:key="school.school_or_district_id" :value="school.school_or_district_id">{{ school.school_or_district_name }}</option>
               </datalist>
+              
             </td>
           </tr>
           <tr>
-            <th class="p-3">Year</th>
-            <th class="p-3">Grade</th>
-            <th class="p-3">Subject</th>
-            <th class="p-3">Exam Language</th>
-            <th class="p-3">Gender</th>
-            <th class="p-3">Francophone</th>
-            <th class="p-3">French Immersion</th>
-            <th class="p-3">ELL</th>
-            <th class="p-3">Indigenous</th>
+            <th class="p-1">Year</th>
+            <th class="p-1">Grade</th>
+            <th class="p-1">Subject</th>
+            <th class="p-1">Exam Language</th>
+            <th class="p-1">Gender</th>
+            <th class="p-1">Francophone</th>
+            <th class="p-1">French Immersion</th>
+            <th class="p-1">ELL</th>
+            <th class="p-1">Indigenous</th>
           </tr>
           <tr>
 
-            <td class="p-3">
+            <td class="p-1">
               <select v-model="year" class="form-control">
                 <option v-for="option in yearOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -48,7 +38,7 @@
 
             </td>
 
-            <td class="p-3">
+            <td class="p-1">
               <select v-model="grade" class="form-control">
                 <option v-for="option in gradeOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -57,7 +47,7 @@
             </td>
 
 
-            <td class="p-3">
+            <td class="p-1">
               <select v-model="subject" class="form-control">
                 <option v-for="option in subjectOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -65,21 +55,21 @@
               </select>
             </td>
 
-            <td class="p-3">
+            <td class="p-1">
               <select v-model="examLanguage" class="form-control">
                 <option v-for="option in examLanguageOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="p-3">
+            <td class="p-1">
               <select v-model="gender" class="form-control">
                 <option v-for="option in genderOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="p-3"> <select v-model="francophone" class="form-control">
+            <td class="p-1"> <select v-model="francophone" class="form-control">
               
                 <option v-for="option in francophoneOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -87,69 +77,71 @@
               </select>
             </td>
 
-            <td class="p-3"> <select v-model="frenchImmersion" class="form-control">
+            <td class="p-1"> <select v-model="frenchImmersion" class="form-control">
                 <option v-for="option in frenchImmersionOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="p-3"> <select v-model="ell" class="form-control">
+            <td class="p-1"> <select v-model="ell" class="form-control">
                 <option v-for="option in ellOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="p-3"> <select v-model="indigenous" class="form-control">
+            <td class="p-1"> <select v-model="indigenous" class="form-control">
                 <option v-for="option in indigenousOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
           </tr>
-          <tr>
-            <td class="uk-text-right" colspan="100">
-              <button type="submit" class="uk-button uk-button-large uk-button-primary filter-update-btn">Filter
-                Report&nbsp;<i class="fas fa-arrow-circle-right"></i></button>
-            </td>
-          </tr>
         </tbody>
       </table>
+        <div class="py-4">
+          <b-button type="submit" class="uk-button uk-button-large uk-button-primary filter-update-btn btn-success mr-2">Filter
+          Report <i class="fas fa-arrow-circle-right"></i></b-button>
+          <b-button @click="resetSearch" class="btn-success mr-2">Reset</b-button>
+        </div>
     </form>
-    <h2 class="search-filters">
-      <span v-if="school">
-        {{school}}
-      </span>
-      <span v-if="year">
-        {{year}}
-      </span>
-      <span v-if="grade">
-        Grade {{grade}}
-      </span>
-      <span v-if="subject">
-        {{subject}}
-      </span>
-      <span v-if="examLanguage">
-        {{examLanguage}}
-      </span>
-      <span v-if="gender != 'all'">
-        {{gender}}
-      </span>
-      <span v-if="francophone=='Yes'">
-        Francophone
-      </span>
-      <span v-if="frenchImmersion=='Yes'">
-        French Immersion
-      </span>
-      <span v-if="ell == 'Yes'">
-        ELL
-      </span>
-      <span v-if="indigenous == 'Yes'">
-        Indigenous
-      </span>
-    </h2>
+    <div>
+      <h2 class="search-filters border-bottom">
+        <span v-if="school">
+          {{school}} - {{subject}}
+        </span>
+      </h2>
+      <h4 class="header">
+        <span v-if="year">
+          {{year}}
+        </span>
+        <span v-if="grade">
+          Grade {{grade}}
+        </span>
+        <span v-if="examLanguage">
+          {{examLanguage}}
+        </span>
+        <span v-if="gender != 'all'">
+          {{gender}}
+        </span>
+        <span v-if="francophone=='Yes'">
+          Francophone
+        </span>
+        <span v-if="frenchImmersion=='Yes'">
+          French Immersion
+        </span>
+        <span v-if="ell == 'Yes'">
+          ELL
+        </span>
+        <span v-if="indigenous == 'Yes'">
+          Indigenous
+        </span>
+      </h4>
+    </div>
     <div v-if='searchMessage' class="search-results-message">
       {{searchMessage}}
     </div>
+    
+
     <div id="results" v-if="!this.aSelectedResponses.length">
        There are no results for your search.
     </div>
@@ -160,16 +152,18 @@
           <b-tab title="A: SELECTED RESPONSE" active>
             <template>
               <div>
-                <b-table striped hover :items="this.aSelectedResponses" :fields="fields">
+                <b-table striped hover :items="this.aSelectedResponses" :fields="aSelectedResponsesFields">
                 </b-table>
               </div>
             </template>
           </b-tab>
           <b-tab title="B: SELECTED RESPONSE">
-            B Responses
+              <b-table striped hover :items="this.bConstructedResponses" :fields="bConstructedResponsesFields">
+              </b-table>
           </b-tab>
           <b-tab title="C: SELECTED RESPONSE">
-            <slot></slot>
+              <b-table striped hover :items="this.aSelectedResponses" :fields="fieldsC">
+              </b-table>
           </b-tab>
         </b-tabs>
       </div>
@@ -184,44 +178,109 @@
     data() {
       return {
         searchMessage: "",
-        fields: [{
+        aSelectedResponsesFields: [{
             key: 'content',
-            label: 'Content',
+            label: 'CONTENT',
           }, {
             key: 'item',
-            label: 'Item #',
+            label: 'ITEM #',
           },
           {
             key: 'cognitive_level',
-            label: 'Cognitive Level',
+            label: 'COGNITIVE LEVEL',
           },
           {
             key: 'number_of_respondents',
-            label: 'Number of Respondents'
+            label: 'RESPONDENTS'
           },
           {
             key: 'degree_of_difficulty',
-            label: 'Degree of Difficulty'
+            label: 'DEGREE OF DIFFICULTY'
           },
           {
             key: 'percent_correct',
-            label: '% Correct'
+            label: '% CORRECT'
           },
           {
             key: 'percent_incorrect',
-            label: '% Incorrect',
+            label: '% INCORRECT',
           },
           {
             key: 'item_descriptor',
-            label: 'Item Descriptor',
+            label: 'ITEM DESCRIPTOR',
           },
         ],
         aSelectedResponses: {},
-        bSelectedResponses: {},
+        bConstructedResponsesFields: [{
+            key: 'content',
+            label: 'CONTENT	ITEM #',
+          }, {
+            key: 'item',
+            label: 'RESPONDENTS',
+          },
+          {
+            key: 'num_of_score_0',
+            label: 'SCORE 0',
+          },
+          {
+            key: 'num_of_score_1',
+            label: 'SCORE 1'
+          },
+          {
+            key: 'num_of_score_2',
+            label: 'SCORE 2'
+          },
+          {
+            key: 'num_of_score_3',
+            label: 'SCORE 3'
+          },
+          {
+            key: 'num_of_score_4',
+            label: 'SCORE 4',
+          },
+          {
+            key: 'description',
+            label: 'ITEM DESCRIPTOR',
+          },
+        ],
+
+        bConstructedResponses: {},
+         fieldsC: [{
+            key: 'content',
+            label: 'CONTENT	ITEM #',
+          }, {
+            key: 'item',
+            label: 'OF RESPONDENTS',
+          },
+          {
+            key: 'num_of_score_0',
+            label: 'SCORE 0',
+          },
+          {
+            key: 'num_of_score_1',
+            label: 'SCORE 1'
+          },
+          {
+            key: 'num_of_score_2',
+            label: 'SCORE 2'
+          },
+          {
+            key: 'num_of_score_3',
+            label: 'SCORE 3'
+          },
+          {
+            key: 'num_of_score_4',
+            label: 'SCORE 4',
+          },
+          {
+            key: 'description',
+            label: 'ITEM DESCRIPTOR',
+          },
+        ],
         cSelectedResponses: {},
-        school: 'all',
+        school: '',
         schoolList: SchoolsList,
-        year: '2017',
+        year: '2019-2020',
         yearOptions: [{
             text: '2017',
             value: '2017-2018'
@@ -235,7 +294,7 @@
             value: '2019-2020'
           }
         ],
-        grade: "4",
+        grade: "04",
         gradeOptions: [{
             text: '4',
             value: '04'
@@ -245,7 +304,7 @@
             value: '07'
           },
         ],
-        subject: "",
+        subject: "Reading",
         subjectOptions: [{
             text: 'Reading',
             value: 'Reading'
@@ -344,20 +403,48 @@
 
     },
     created() {
-      console.log(this.schoolList)
+    
     },
     methods: {
       search: function () {
         this.searchMessage = "";
-        this.aSelectedResponse = {};
-        this.bSelectedResponse = {};
+        this.aSelectedResponses = {};
+        this.bConstructedResponses = {};
         this.cSelectedResponse = {};
         ResponseService.getASelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.aSelectedResponses = response.data;
         });
-        this.bSelectedResponse = "B responses";
-        this.cSelectedResponse = "C Responses";
+        ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
+          .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
+          this.bConstructedResponses = response.data;
+        });
+        ResponseService.getCSelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
+          .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
+          this.cSelectedResponses = response.data;
+        });
+        
+      },
+      resetSearch: function(){
+          this.searchMessage = "";
+          this.aSelectedResponses = {};
+          this.bConstructedResponses = {};
+          this.cSelectedResponse = {};
+          this.school = "";
+          this.year = "";
+          this.grade = "";
+          this.subject = "";
+          this.examLanguage = "";
+          this.gender = "";
+          this.francophone = "";
+          this.frenchImmersion= "";
+          this.ell= "";
+          this.indigenous;
+          this.saveSelectionAndReset(); 
+          
+      },
+      clearSchool: function(){
+        this.school = "";
       },
       saveSelectionAndReset(e) {
         let val = e;
@@ -374,5 +461,12 @@
 <style scoped>
   h2.search-filters span+span::before {
     content: " | "
+  }
+  h4.header span + span::before{
+    content: " | "
+
+  }
+  .clear-button{
+    float:right;
   }
 </style>

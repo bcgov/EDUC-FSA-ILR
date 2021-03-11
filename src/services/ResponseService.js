@@ -7,18 +7,7 @@ var apiClient = axios.create({
 
 export default {
     getASelectedResponse(school,year,grade,subject,examLanguage,gender,francophone,frenchImmersion,ell,indigenous) {
-    console.log('https://test.studentsuccess.gov.bc.ca/selected-response/BC%20PUBLIC%20SCHOOL/'     
-    + school + "/" 
-    + year + "/"
-    + grade + "/" 
-    + subject + "/" 
-    + examLanguage + "/"
-    + gender + "/"
-    + francophone + "/"
-    + frenchImmersion + "/"
-    + ell + "/" 
-    + indigenous);
-        return apiClient.get('/selected-response/BC%20PUBLIC%20SCHOOL/'     
+        return apiClient.get('/selected-response/'     
         + school + "/" 
         + year + "/"
         + grade + "/" 
@@ -29,5 +18,33 @@ export default {
         + frenchImmersion + "/"
         + ell + "/" 
         + indigenous);
-    }
+    },
+    getBConstructedResponse(school,year,grade,subject,examLanguage,gender,francophone,frenchImmersion,ell,indigenous) {   
+        return apiClient.get('/constructed-response/'     
+            + school + "/" 
+            + year + "/"
+            + grade + "/" 
+            + subject + "/" 
+            + examLanguage + "/"
+            + gender + "/"
+            + francophone + "/"
+            + frenchImmersion + "/"
+            + ell + "/" 
+            + indigenous);
+    },
+    getCSelectedResponse(school,year,grade,subject,examLanguage,gender,francophone,frenchImmersion,ell,indigenous) {
+        return apiClient.get('/selected-response/'     
+            + school + "/" 
+            + year + "/"
+            + grade + "/" 
+            + subject + "/" 
+            + examLanguage + "/"
+            + gender + "/"
+            + francophone + "/"
+            + frenchImmersion + "/"
+            + ell + "/" 
+            + indigenous);
+    }        
+
+
 }
