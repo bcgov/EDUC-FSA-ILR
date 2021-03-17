@@ -162,7 +162,7 @@
               </b-table>
           </b-tab>
           <b-tab title="C: SELECTED RESPONSE">
-              <b-table striped hover :items="this.aSelectedResponses" :fields="fieldsC">
+              <b-table striped hover :items="this.cContextualResponses" :fields="fieldsC">
               </b-table>
           </b-tab>
         </b-tabs>
@@ -216,7 +216,7 @@
             label: 'CONTENT	ITEM #',
           }, {
             key: 'item',
-            label: 'RESPONDENTS',
+            label: 'WRITERS',
           },
           {
             key: 'num_of_score_0',
@@ -246,38 +246,26 @@
 
         bConstructedResponses: {},
          fieldsC: [{
-            key: 'content',
-            label: 'CONTENT	ITEM #',
+            key: 'cognitive_level',
+            label: 'COGNITIVE LEVEL',
           }, {
-            key: 'item',
-            label: 'OF RESPONDENTS',
+            key: 'cognitive_level_description',
+            label: 'RECALL',
           },
           {
-            key: 'num_of_score_0',
-            label: 'SCORE 0',
+            key: 'number_of_items',
+            label: 'NO OF ITEMS',
           },
           {
-            key: 'num_of_score_1',
-            label: 'SCORE 1'
+            key: 'number_of_students_responding',
+            label: 'NO OF STUDENTS WHO RESPONDED'
           },
           {
-            key: 'num_of_score_2',
-            label: 'SCORE 2'
-          },
-          {
-            key: 'num_of_score_3',
-            label: 'SCORE 3'
-          },
-          {
-            key: 'num_of_score_4',
-            label: 'SCORE 4',
-          },
-          {
-            key: 'description',
-            label: 'ITEM DESCRIPTOR',
-          },
+            key: 'pct_correct',
+            label: 'PERCENTAGE OF STUDENTS WITH CORRECT RESPONSES'
+          }
         ],
-        cSelectedResponses: {},
+        cContextualResponses: {},
         school: '',
         schoolList: SchoolsList,
         year: '2019-2020',
@@ -421,7 +409,8 @@
         });
         ResponseService.getCSelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
-          this.cSelectedResponses = response.data;
+          this.cContextualResponses = response.data;
+          console.log(this.cContextualResponses);
         });
         
       },
