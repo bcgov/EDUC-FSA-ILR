@@ -32,7 +32,7 @@ export default {
             + ell + "/" 
             + indigenous);
     },
-    getCSelectedResponse(school,year,grade,subject,examLanguage,gender,francophone,frenchImmersion,ell,indigenous) {
+    getCCognitiveResponse(school,year,grade,subject,examLanguage,gender,francophone,frenchImmersion,ell,indigenous) {
         return apiClient.get('/cognitive-levels/'     
             + school + "/" 
             + year + "/"

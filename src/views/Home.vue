@@ -4,7 +4,7 @@
     <form action="" method="GET" @submit.prevent="search">
 
     <b-form-input list="my-list-id" @change="saveSelectionAndReset" @focus="clearSchool" v-model="school"></b-form-input>
-    <a href="#" @click="clearSchool" class="clear-button">Clear</a>
+    
       <table class="uk-table uk-table-small filter">
         <tbody>
           <tr>
@@ -30,7 +30,7 @@
           <tr>
 
             <td class="p-1">
-              <select v-model="year" class="form-control">
+              <select v-model="year" class="form-control" @change="search">
                 <option v-for="option in yearOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -39,7 +39,7 @@
             </td>
 
             <td class="p-1">
-              <select v-model="grade" class="form-control">
+              <select v-model="grade" class="form-control" @change="search">
                 <option v-for="option in gradeOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -48,7 +48,7 @@
 
 
             <td class="p-1">
-              <select v-model="subject" class="form-control">
+              <select v-model="subject" class="form-control" @change="search" >
                 <option v-for="option in subjectOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -56,20 +56,20 @@
             </td>
 
             <td class="p-1">
-              <select v-model="examLanguage" class="form-control">
+              <select v-model="examLanguage" class="form-control" @change="search">
                 <option v-for="option in examLanguageOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
             <td class="p-1">
-              <select v-model="gender" class="form-control">
+              <select v-model="gender" class="form-control" @change="search">
                 <option v-for="option in genderOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="p-1"> <select v-model="francophone" class="form-control">
+            <td class="p-1"> <select v-model="francophone" class="form-control" @change="search">
               
                 <option v-for="option in francophoneOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -77,19 +77,19 @@
               </select>
             </td>
 
-            <td class="p-1"> <select v-model="frenchImmersion" class="form-control">
+            <td class="p-1"> <select v-model="frenchImmersion" class="form-control" @change="search">
                 <option v-for="option in frenchImmersionOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="p-1"> <select v-model="ell" class="form-control">
+            <td class="p-1"> <select v-model="ell" class="form-control" @change="search">
                 <option v-for="option in ellOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
               </select></td>
 
-            <td class="p-1"> <select v-model="indigenous" class="form-control">
+            <td class="p-1"> <select v-model="indigenous" class="form-control" @change="search">
                 <option v-for="option in indigenousOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -98,14 +98,9 @@
           </tr>
         </tbody>
       </table>
-        <div class="py-4">
-          <b-button type="submit" class="uk-button uk-button-large uk-button-primary filter-update-btn btn-success mr-2">Filter
-          Report <i class="fas fa-arrow-circle-right"></i></b-button>
-          <b-button @click="resetSearch" class="btn-success mr-2">Reset</b-button>
-        </div>
     </form>
     <div>
-      <h2 class="search-filters border-bottom">
+      <h2 class="search-filters border-bottom pt-5">
         <span v-if="school">
           {{school}} - {{subject}}
         </span>
@@ -141,15 +136,11 @@
       {{searchMessage}}
     </div>
     
-
-    <div id="results" v-if="!this.aSelectedResponses.length">
-       There are no results for your search.
-    </div>
-    <div id="results" v-if="this.aSelectedResponses.length">
+    <div id="results">
       <div>
         <b-tabs content-class="mt-3">
 
-          <b-tab title="A: SELECTED RESPONSE" active>
+          <b-tab v-if="aSelectedResponses.length" title="A: SELECTED RESPONSE" active>
             <template>
               <div>
                 <b-table striped hover :items="this.aSelectedResponses" :fields="aSelectedResponsesFields">
@@ -157,13 +148,30 @@
               </div>
             </template>
           </b-tab>
-          <b-tab title="B: SELECTED RESPONSE">
+          <b-tab v-if="!aSelectedResponses.length" title="A: SELECTED RESPONSE" disabled>
+            <template>
+              <div>
+                There are no responses for this section. Please view other sections if available, or change your filter parameters.
+              </div>
+            </template>
+          </b-tab>
+          <b-tab v-if="bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE">
               <b-table striped hover :items="this.bConstructedResponses" :fields="bConstructedResponsesFields">
               </b-table>
           </b-tab>
-          <b-tab title="C: SELECTED RESPONSE">
-              <b-table striped hover :items="this.cContextualResponses" :fields="fieldsC">
+          <b-tab v-if="!bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE" disabled>
+              <div>
+                There are no responses for this section. Please view other sections if available, or change your filter parameters.
+              </div>
+          </b-tab>          
+          <b-tab v-if="cCognitiveResponses.length" title="C: COGNITIVE RESPONSE">
+              <b-table striped hover :items="this.cCognitiveResponses" :fields="fieldsC">
               </b-table>
+          </b-tab>
+          <b-tab v-if="!cCognitiveResponses.length" title="C: COGNITIVE RESPONSE">
+              <div>
+                There are no responses for this section. Please view other sections if available, or change your filter parameters.
+              </div>
           </b-tab>
         </b-tabs>
       </div>
@@ -265,8 +273,8 @@
             label: 'PERCENTAGE OF STUDENTS WITH CORRECT RESPONSES'
           }
         ],
-        cContextualResponses: {},
-        school: '',
+        cCognitiveResponses: {},
+        school: 'All Public Schools',
         schoolList: SchoolsList,
         year: '2019-2020',
         yearOptions: [{
@@ -391,7 +399,7 @@
 
     },
     created() {
-    
+      this.search();
     },
     methods: {
       search: function () {
@@ -407,12 +415,10 @@
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.bConstructedResponses = response.data;
         });
-        ResponseService.getCSelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
+        ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
-          this.cContextualResponses = response.data;
-          console.log(this.cContextualResponses);
+          this.cCognitiveResponses = response.data;
         });
-        
       },
       resetSearch: function(){
           this.searchMessage = "";
