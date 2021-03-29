@@ -171,11 +171,11 @@
                 There are no responses for this section. Please view other sections if available, or change your filter parameters.
               </div>
           </b-tab>          
-          <b-tab v-if="cCognitiveResponses.length" title="C: COGNITIVE RESPONSE">
+          <b-tab v-if="cCognitiveResponses.length" title="C: COGNITIVE LEVELS">
               <b-table striped hover :items="this.cCognitiveResponses" :fields="fieldsC">
               </b-table>
           </b-tab>
-          <b-tab v-if="!cCognitiveResponses.length" title="C: COGNITIVE RESPONSE">
+          <b-tab v-if="!cCognitiveResponses.length" title="C: COGNITIVE LEVELS">
               <div>
                 There are no responses for this section. Please view other sections if available, or change your filter parameters.
               </div>
