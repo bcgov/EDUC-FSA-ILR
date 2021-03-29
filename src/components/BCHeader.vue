@@ -21,7 +21,7 @@
             />
      
           </a>
-          <h1>Foundation Skills Assessment Item Level Reports</h1>
+          <h1></h1>
         </div>
       </div>
     </header>
@@ -57,9 +57,16 @@
         <ul>
           <li>
             <!-- <router-link to="/">Select Student</router-link> -->
-            <a href="#" class="nav-link" @click="selectStudent()">Home</a>
+            <a href="/" class="nav-link" >Home</a>
           </li>
-          <li><a href="#" class="nav-link" @click="selectStudent()">Glossary</a></li>
+          <li>
+            <a href="/all/school-districts" class="nav-link" >School Districts</a>
+          </li>
+           <li>
+            <a href="/all/cities" class="nav-link" >Cities</a>
+          </li>
+          <li><a href="/glossary" class="nav-link">Glossary</a></li>
+          <li><a href="/reporting" class="nav-link">Priority Reports</a></li>
         </ul> 
       </div>
     </nav>

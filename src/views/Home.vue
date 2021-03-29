@@ -2,11 +2,12 @@
   <div class="container">
     <h1>Foundation Skills Assesment Reports</h1>
     <form action="" method="GET" @submit.prevent="search">
-
+    <span><strong class="p-1">Select a District</strong></span>
     <b-form-input list="my-list-id" @change="saveSelectionAndReset" @focus="clearSchool" v-model="school"></b-form-input>
-    
+     
       <table class="uk-table uk-table-small filter">
         <tbody>
+         
           <tr>
             <td>
               <datalist id="my-list-id">
@@ -20,7 +21,7 @@
             <th class="p-1">Year</th>
             <th class="p-1">Grade</th>
             <th class="p-1">Subject</th>
-            <th class="p-1">Exam Language</th>
+            <th class="p-1">Language</th>
             <th class="p-1">Gender</th>
             <th class="p-1">Francophone</th>
             <th class="p-1">French Immersion</th>
@@ -94,7 +95,9 @@
                   {{ option.text }}
                 </option>
               </select></td>
-
+            <td>
+              <button class="btn btn-secondary" @click="resetSearch()">Clear All</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -102,15 +105,19 @@
     <div>
       <h2 class="search-filters border-bottom pt-5">
         <span v-if="school">
-          {{school}} - {{subject}}
+          {{school}}
         </span>
       </h2>
       <h4 class="header">
+        Filters: 
         <span v-if="year">
           {{year}}
         </span>
         <span v-if="grade">
           Grade {{grade}}
+        </span>
+         <span v-if="subject">
+          {{subject}}
         </span>
         <span v-if="examLanguage">
           {{examLanguage}}
