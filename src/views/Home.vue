@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Foundation Skills Assesment Reports</h1>
+    <h1>Foundation Skills Assessment Reports</h1>
     <form action="" method="GET" @submit.prevent="search">
 
     <b-form-input list="my-list-id" @change="saveSelectionAndReset" @focus="clearSchool" v-model="school"></b-form-input>
@@ -140,7 +140,7 @@
       <div>
         <b-tabs content-class="mt-3">
 
-          <b-tab v-if="aSelectedResponses.length" title="A: SELECTED RESPONSE" active>
+          <b-tab v-if="aSelectedResponses.length" title="A: SELECTED RESPONSE">
             <template>
               <div>
                 <b-table striped hover :items="this.aSelectedResponses" :fields="aSelectedResponsesFields">
@@ -164,11 +164,11 @@
                 There are no responses for this section. Please view other sections if available, or change your filter parameters.
               </div>
           </b-tab>          
-          <b-tab v-if="cCognitiveResponses.length" title="C: COGNITIVE RESPONSE">
+          <b-tab v-if="cCognitiveResponses.length" title="C: COGNITIVE LEVELS">
               <b-table striped hover :items="this.cCognitiveResponses" :fields="fieldsC">
               </b-table>
           </b-tab>
-          <b-tab v-if="!cCognitiveResponses.length" title="C: COGNITIVE RESPONSE">
+          <b-tab v-if="!cCognitiveResponses.length" title="C: COGNITIVE LEVELS" disabled>
               <div>
                 There are no responses for this section. Please view other sections if available, or change your filter parameters.
               </div>
