@@ -2,19 +2,21 @@
   <div class="container">
     <h1>Foundation Skills Assessment Reports</h1>
     <form action="" method="GET" @submit.prevent="search">
-    <span><strong class="p-1">Select a District</strong></span>
-    <b-form-input list="my-list-id" @change="saveSelectionAndReset" @focus="clearSchool" v-model="school"></b-form-input>
-     
-      <table class="uk-table uk-table-small filter">
+      <span><strong class="p-1">Select a Report</strong></span>
+      <b-form-input list="my-list-id" @change="saveSelectionAndReset" @focus="clearSchool" v-model="school">
+      </b-form-input>
+
+      <table class="">
         <tbody>
-         
+
           <tr>
-            <td>
+            <td class="my-3">
               <datalist id="my-list-id">
-                <option>Select a District</option>
-                <option v-for="school in schoolList" v-bind:key="school.school_or_district_id" :value="school.school_or_district_id">{{ school.school_or_district_name }}</option>
+                <option>Select a Report</option>
+                <option v-for="school in schoolList" v-bind:key="school.school_or_district_id"
+                  :value="school.school_or_district_id">{{ school.school_or_district_name }}</option>
               </datalist>
-              
+              <p class="my-3"></p>
             </td>
           </tr>
           <tr>
@@ -25,7 +27,7 @@
             <th class="p-1">Gender</th>
             <th class="p-1">Francophone</th>
             <th class="p-1">French Immersion</th>
-            <th class="p-1">ELL</th>
+            <th class="p-1">English Language Learners</th>
             <th class="p-1">Indigenous</th>
           </tr>
           <tr>
@@ -49,7 +51,7 @@
 
 
             <td class="p-1">
-              <select v-model="subject" class="form-control" @change="search" >
+              <select v-model="subject" class="form-control" @change="search">
                 <option v-for="option in subjectOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -71,7 +73,7 @@
               </select></td>
 
             <td class="p-1"> <select v-model="francophone" class="form-control" @change="search">
-              
+
                 <option v-for="option in francophoneOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -95,8 +97,11 @@
                   {{ option.text }}
                 </option>
               </select></td>
-            <td>
-              <button class="btn btn-secondary" @click="resetSearch()">Clear All</button>
+
+          </tr>
+          <tr>
+            <td class="align-text-right">
+              <button class="btn btn-secondary" @click="resetSearch()">Reset</button>
             </td>
           </tr>
         </tbody>
@@ -109,14 +114,14 @@
         </span>
       </h2>
       <h4 class="header">
-        Filters: 
+        Filters:
         <span v-if="year">
           {{year}}
         </span>
         <span v-if="grade">
           Grade {{grade}}
         </span>
-         <span v-if="subject">
+        <span v-if="subject">
           {{subject}}
         </span>
         <span v-if="examLanguage">
@@ -143,7 +148,9 @@
       {{searchMessage}}
     </div>
 
-<div v-if="loading"><b-spinner></b-spinner></div>
+    <div v-if="loading">
+      <b-spinner></b-spinner>
+    </div>
     <div id="results" v-if="!loading">
       <div>
         <b-tabs content-class="mt-3">
@@ -151,7 +158,8 @@
           <b-tab v-if="aSelectedResponses.length" title="A: SELECTED RESPONSE">
             <template>
               <div>
-                <b-table striped hover :items="this.aSelectedResponses" :fields="aSelectedResponsesFields">
+                <b-table sortBy="item" striped hover :items="this.aSelectedResponses"
+                  :fields="aSelectedResponsesFields">
                 </b-table>
               </div>
             </template>
@@ -159,27 +167,31 @@
           <b-tab v-if="!aSelectedResponses.length" title="A: SELECTED RESPONSE">
             <template>
               <div>
-                There are no responses for this section. Please view other sections if available, or change your filter parameters.
+                There are no responses for this section. Please view other sections if available, or change your filter
+                parameters.
               </div>
             </template>
           </b-tab>
           <b-tab v-if="bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE">
-              <b-table striped hover :items="this.bConstructedResponses" :fields="bConstructedResponsesFields">
-              </b-table>
+            <b-table striped hover sortBy="theme" :items="this.bConstructedResponses"
+              :fields="bConstructedResponsesFields">
+            </b-table>
           </b-tab>
-          <b-tab v-if="!bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE" >
-              <div>
-                There are no responses for this section. Please view other sections if available, or change your filter parameters.
-              </div>
-          </b-tab>          
+          <b-tab v-if="!bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE">
+            <div>
+              There are no responses for this section. Please view other sections if available, or change your filter
+              parameters.
+            </div>
+          </b-tab>
           <b-tab v-if="cCognitiveResponses.length" title="C: COGNITIVE LEVELS">
-              <b-table striped hover :items="this.cCognitiveResponses" :fields="fieldsC">
-              </b-table>
+            <b-table striped hover sort-by="cognitive_level" :items="this.cCognitiveResponses" :fields="fieldsC">
+            </b-table>
           </b-tab>
           <b-tab v-if="!cCognitiveResponses.length" title="C: COGNITIVE LEVELS">
-              <div>
-                There are no responses for this section. Please view other sections if available, or change your filter parameters.
-              </div>
+            <div>
+              There are no responses for this section. Please view other sections if available, or change your filter
+              parameters.
+            </div>
           </b-tab>
         </b-tabs>
       </div>
@@ -197,9 +209,11 @@
         aSelectedResponsesFields: [{
             key: 'content',
             label: 'CONTENT',
+            sortable: true,
           }, {
             key: 'item',
             label: 'ITEM #',
+            sortable: true,
           },
           {
             key: 'cognitive_level',
@@ -207,7 +221,8 @@
           },
           {
             key: 'number_of_respondents',
-            label: 'RESPONDENTS'
+            label: 'RESPONDENTS',
+            sortable: true,
           },
           {
             key: 'degree_of_difficulty',
@@ -231,6 +246,10 @@
             key: 'content',
             label: 'CONTENT	ITEM #',
           }, {
+            key: 'theme',
+            label: 'THEME',
+          },
+          {
             key: 'item',
             label: 'ITEM',
           },
@@ -265,7 +284,7 @@
         ],
 
         bConstructedResponses: {},
-         fieldsC: [{
+        fieldsC: [{
             key: 'cognitive_level',
             label: 'COGNITIVE LEVEL',
           }, {
@@ -415,9 +434,9 @@
       this.search();
     },
     methods: {
-  
+
       search: function () {
-        
+
         this.searchMessage = "";
         this.aSelectedResponses = {};
         this.bConstructedResponses = {};
@@ -426,39 +445,44 @@
         ResponseService.getASelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.aSelectedResponses = response.data;
-          this.loading=false;
+          this.loading = false;
+          console.log(this.aSelectedResponses);
         });
-        ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
+        ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
+          this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.bConstructedResponses = response.data;
-          this.loading=false;
+          this.loading = false;
+          console.log(this.bConstructedResponses);
         });
-        ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
+        ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
+          this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.cCognitiveResponses = response.data;
-          this.loading=false;
+          this.loading = false;
+          console.log(this.cCognitiveResponses);
         });
-       
+
       },
-      resetSearch: function(){
-          this.searchMessage = "";
-          this.aSelectedResponses = {};
-          this.bConstructedResponses = {};
-          this.cSelectedResponse = {};
-          this.school = "";
-          this.year = "";
-          this.grade = "";
-          this.subject = "";
-          this.examLanguage = "";
-          this.gender = "";
-          this.francophone = "";
-          this.frenchImmersion= "";
-          this.ell= "";
-          this.indigenous;
-          this.saveSelectionAndReset(); 
-          
+      resetSearch: function () {
+        this.searchMessage = "";
+        this.aSelectedResponses = {};
+        this.bConstructedResponses = {};
+        this.cSelectedResponse = {};
+        this.school = "All Public Schools";
+        this.year = "2019-2020";
+        this.grade = "04";
+        this.subject = "Reading";
+        this.examLanguage = "English";
+        this.gender = "all";
+        this.francophone = "all";
+        this.frenchImmersion = "all";
+        this.ell = "all";
+        this.indigenous = 'all';
+        this.saveSelectionAndReset();
+
       },
-      clearSchool: function(){
+      clearSchool: function () {
         this.school = "";
       },
       saveSelectionAndReset(e) {
@@ -468,7 +492,7 @@
         }
         e = "";
         this.search();
-      
+
       }
     }
   }
@@ -479,11 +503,13 @@
   h2.search-filters span+span::before {
     content: " | "
   }
-  h4.header span + span::before{
+
+  h4.header span+span::before {
     content: " | "
 
   }
-  .clear-button{
-    float:right;
+
+  .clear-button {
+    float: right;
   }
 </style>
