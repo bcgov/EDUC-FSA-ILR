@@ -142,8 +142,9 @@
     <div v-if='searchMessage' class="search-results-message">
       {{searchMessage}}
     </div>
-    
-    <div id="results">
+
+<div v-if="loading"><b-spinner></b-spinner></div>
+    <div id="results" v-if="!loading">
       <div>
         <b-tabs content-class="mt-3">
 
@@ -155,7 +156,7 @@
               </div>
             </template>
           </b-tab>
-          <b-tab v-if="!aSelectedResponses.length" title="A: SELECTED RESPONSE" disabled>
+          <b-tab v-if="!aSelectedResponses.length" title="A: SELECTED RESPONSE">
             <template>
               <div>
                 There are no responses for this section. Please view other sections if available, or change your filter parameters.
@@ -166,7 +167,7 @@
               <b-table striped hover :items="this.bConstructedResponses" :fields="bConstructedResponsesFields">
               </b-table>
           </b-tab>
-          <b-tab v-if="!bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE" disabled>
+          <b-tab v-if="!bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE" >
               <div>
                 There are no responses for this section. Please view other sections if available, or change your filter parameters.
               </div>
@@ -231,6 +232,10 @@
             label: 'CONTENT	ITEM #',
           }, {
             key: 'item',
+            label: 'ITEM',
+          },
+          {
+            key: 'writers',
             label: 'WRITERS',
           },
           {
@@ -401,7 +406,8 @@
             text: 'No',
             value: 'No'
           },
-        ]
+        ],
+        loading: false,
       }
 
     },
@@ -409,23 +415,33 @@
       this.search();
     },
     methods: {
+  
       search: function () {
+        
         this.searchMessage = "";
         this.aSelectedResponses = {};
         this.bConstructedResponses = {};
         this.cSelectedResponse = {};
+        this.loading = true;
         ResponseService.getASelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.aSelectedResponses = response.data;
+          this.loading=false;
+          console.log(this.aSelectedResponses);
         });
         ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.bConstructedResponses = response.data;
+          this.loading=false;
+          console.log(this.bConstructedResponses);
         });
         ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.cCognitiveResponses = response.data;
+          this.loading=false;
+          console.log(this.cCognitiveResponses);
         });
+       
       },
       resetSearch: function(){
           this.searchMessage = "";
@@ -454,6 +470,8 @@
           this.school = val;
         }
         e = "";
+        this.search();
+      
       }
     }
   }
