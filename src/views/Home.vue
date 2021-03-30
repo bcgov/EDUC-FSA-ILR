@@ -427,19 +427,16 @@
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.aSelectedResponses = response.data;
           this.loading=false;
-          console.log(this.aSelectedResponses);
         });
         ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.bConstructedResponses = response.data;
           this.loading=false;
-          console.log(this.bConstructedResponses);
         });
         ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.cCognitiveResponses = response.data;
           this.loading=false;
-          console.log(this.cCognitiveResponses);
         });
        
       },
