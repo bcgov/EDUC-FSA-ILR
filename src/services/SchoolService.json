@@ -1,9 +1,16 @@
 [{
+  "school_or_district_id": "All Independent Schools",
+  "school_or_district_name": "All Independent Schools"
+}, {
+  "school_or_district_id": "All Public Schools",
+  "school_or_district_name": "All Public Schools"
+}, {
+  "school_or_district_id": "All Schools",
+  "school_or_district_name": "All Schools"
+},
+{
   "school_or_district_id": "005 All Schools",
   "school_or_district_name": "005 Southeast Kootenay All Schools"
-}, {
-  "school_or_district_id": "005 Independent Schools",
-  "school_or_district_name": "005 Southeast Kootenay Independent Schools"
 }, {
   "school_or_district_id": "005 Public Schools",
   "school_or_district_name": "005 Southeast Kootenay Public Schools"
@@ -11,17 +18,11 @@
   "school_or_district_id": "006 All Schools",
   "school_or_district_name": "006 Rocky Mountain All Schools"
 }, {
-  "school_or_district_id": "006 Independent Schools",
-  "school_or_district_name": "006 Rocky Mountain Independent Schools"
-}, {
   "school_or_district_id": "006 Public Schools",
   "school_or_district_name": "006 Rocky Mountain Public Schools"
 }, {
   "school_or_district_id": "008 All Schools",
   "school_or_district_name": "008 Kootenay Lake All Schools"
-}, {
-  "school_or_district_id": "008 Independent Schools",
-  "school_or_district_name": "008 Kootenay Lake Independent Schools"
 }, {
   "school_or_district_id": "008 Public Schools",
   "school_or_district_name": "008 Kootenay Lake Public Schools"
@@ -41,17 +42,11 @@
   "school_or_district_id": "020 All Schools",
   "school_or_district_name": "020 Kootenay-Columbia All Schools"
 }, {
-  "school_or_district_id": "020 Independent Schools",
-  "school_or_district_name": "020 Kootenay-Columbia Independent Schools"
-}, {
   "school_or_district_id": "020 Public Schools",
   "school_or_district_name": "020 Kootenay-Columbia Public Schools"
 }, {
   "school_or_district_id": "022 All Schools",
   "school_or_district_name": "022 Vernon All Schools"
-}, {
-  "school_or_district_id": "022 Independent Schools",
-  "school_or_district_name": "022 Vernon Independent Schools"
 }, {
   "school_or_district_id": "022 Public Schools",
   "school_or_district_name": "022 Vernon Public Schools"
@@ -59,17 +54,11 @@
   "school_or_district_id": "023 All Schools",
   "school_or_district_name": "023 Central Okanagan All Schools"
 }, {
-  "school_or_district_id": "023 Independent Schools",
-  "school_or_district_name": "023 Central Okanagan Independent Schools"
-}, {
   "school_or_district_id": "023 Public Schools",
   "school_or_district_name": "023 Central Okanagan Public Schools"
 }, {
   "school_or_district_id": "027 All Schools",
   "school_or_district_name": "027 Cariboo-Chilcotin All Schools"
-}, {
-  "school_or_district_id": "027 Independent Schools",
-  "school_or_district_name": "027 Cariboo-Chilcotin Independent Schools"
 }, {
   "school_or_district_id": "027 Public Schools",
   "school_or_district_name": "027 Cariboo-Chilcotin Public Schools"
@@ -77,17 +66,11 @@
   "school_or_district_id": "028 All Schools",
   "school_or_district_name": "028 Quesnel All Schools"
 }, {
-  "school_or_district_id": "028 Independent Schools",
-  "school_or_district_name": "028 Quesnel Independent Schools"
-}, {
   "school_or_district_id": "028 Public Schools",
   "school_or_district_name": "028 Quesnel Public Schools"
 }, {
   "school_or_district_id": "033 All Schools",
   "school_or_district_name": "033 Chilliwack All Schools"
-}, {
-  "school_or_district_id": "033 Independent Schools",
-  "school_or_district_name": "033 Chilliwack Independent Schools"
 }, {
   "school_or_district_id": "033 Public Schools",
   "school_or_district_name": "033 Chilliwack Public Schools"
@@ -95,17 +78,11 @@
   "school_or_district_id": "034 All Schools",
   "school_or_district_name": "034 Abbotsford All Schools"
 }, {
-  "school_or_district_id": "034 Independent Schools",
-  "school_or_district_name": "034 Abbotsford Independent Schools"
-}, {
   "school_or_district_id": "034 Public Schools",
   "school_or_district_name": "034 Abbotsford Public Schools"
 }, {
   "school_or_district_id": "035 All Schools",
   "school_or_district_name": "035 Langley All Schools"
-}, {
-  "school_or_district_id": "035 Independent Schools",
-  "school_or_district_name": "035 Langley Independent Schools"
 }, {
   "school_or_district_id": "035 Public Schools",
   "school_or_district_name": "035 Langley Public Schools"
@@ -113,17 +90,11 @@
   "school_or_district_id": "036 All Schools",
   "school_or_district_name": "036 Surrey All Schools"
 }, {
-  "school_or_district_id": "036 Independent Schools",
-  "school_or_district_name": "036 Surrey Independent Schools"
-}, {
   "school_or_district_id": "036 Public Schools",
   "school_or_district_name": "036 Surrey Public Schools"
 }, {
   "school_or_district_id": "037 All Schools",
   "school_or_district_name": "037 Delta All Schools"
-}, {
-  "school_or_district_id": "037 Independent Schools",
-  "school_or_district_name": "037 Delta Independent Schools"
 }, {
   "school_or_district_id": "037 Public Schools",
   "school_or_district_name": "037 Delta Public Schools"
@@ -131,17 +102,11 @@
   "school_or_district_id": "038 All Schools",
   "school_or_district_name": "038 Richmond All Schools"
 }, {
-  "school_or_district_id": "038 Independent Schools",
-  "school_or_district_name": "038 Richmond Independent Schools"
-}, {
   "school_or_district_id": "038 Public Schools",
   "school_or_district_name": "038 Richmond Public Schools"
 }, {
   "school_or_district_id": "039 All Schools",
   "school_or_district_name": "039 Vancouver All Schools"
-}, {
-  "school_or_district_id": "039 Independent Schools",
-  "school_or_district_name": "039 Vancouver Independent Schools"
 }, {
   "school_or_district_id": "039 Public Schools",
   "school_or_district_name": "039 Vancouver Public Schools"
@@ -149,17 +114,11 @@
   "school_or_district_id": "040 All Schools",
   "school_or_district_name": "040 New Westminster All Schools"
 }, {
-  "school_or_district_id": "040 Independent Schools",
-  "school_or_district_name": "040 New Westminster Independent Schools"
-}, {
   "school_or_district_id": "040 Public Schools",
   "school_or_district_name": "040 New Westminster Public Schools"
 }, {
   "school_or_district_id": "041 All Schools",
   "school_or_district_name": "041 Burnaby All Schools"
-}, {
-  "school_or_district_id": "041 Independent Schools",
-  "school_or_district_name": "041 Burnaby Independent Schools"
 }, {
   "school_or_district_id": "041 Public Schools",
   "school_or_district_name": "041 Burnaby Public Schools"
@@ -167,17 +126,11 @@
   "school_or_district_id": "042 All Schools",
   "school_or_district_name": "042 Maple Ridge-Pitt Meadows All Schools"
 }, {
-  "school_or_district_id": "042 Independent Schools",
-  "school_or_district_name": "042 Maple Ridge-Pitt Meadows Independent Schools"
-}, {
   "school_or_district_id": "042 Public Schools",
   "school_or_district_name": "042 Maple Ridge-Pitt Meadows Public Schools"
 }, {
   "school_or_district_id": "043 All Schools",
   "school_or_district_name": "043 Coquitlam All Schools"
-}, {
-  "school_or_district_id": "043 Independent Schools",
-  "school_or_district_name": "043 Coquitlam Independent Schools"
 }, {
   "school_or_district_id": "043 Public Schools",
   "school_or_district_name": "043 Coquitlam Public Schools"
@@ -185,17 +138,11 @@
   "school_or_district_id": "044 All Schools",
   "school_or_district_name": "044 North Vancouver All Schools"
 }, {
-  "school_or_district_id": "044 Independent Schools",
-  "school_or_district_name": "044 North Vancouver Independent Schools"
-}, {
   "school_or_district_id": "044 Public Schools",
   "school_or_district_name": "044 North Vancouver Public Schools"
 }, {
   "school_or_district_id": "045 All Schools",
   "school_or_district_name": "045 West Vancouver All Schools"
-}, {
-  "school_or_district_id": "045 Independent Schools",
-  "school_or_district_name": "045 West Vancouver Independent Schools"
 }, {
   "school_or_district_id": "045 Public Schools",
   "school_or_district_name": "045 West Vancouver Public Schools"
@@ -209,17 +156,11 @@
   "school_or_district_id": "047 All Schools",
   "school_or_district_name": "047 Powell River All Schools"
 }, {
-  "school_or_district_id": "047 Independent Schools",
-  "school_or_district_name": "047 Powell River Independent Schools"
-}, {
   "school_or_district_id": "047 Public Schools",
   "school_or_district_name": "047 Powell River Public Schools"
 }, {
   "school_or_district_id": "048 All Schools",
   "school_or_district_name": "048 Sea to Sky All Schools"
-}, {
-  "school_or_district_id": "048 Independent Schools",
-  "school_or_district_name": "048 Sea to Sky Independent Schools"
 }, {
   "school_or_district_id": "048 Public Schools",
   "school_or_district_name": "048 Sea to Sky Public Schools"
@@ -227,17 +168,11 @@
   "school_or_district_id": "049 All Schools",
   "school_or_district_name": "049 Central Coast All Schools"
 }, {
-  "school_or_district_id": "049 Independent Schools",
-  "school_or_district_name": "049 Central Coast Independent Schools"
-}, {
   "school_or_district_id": "049 Public Schools",
   "school_or_district_name": "049 Central Coast Public Schools"
 }, {
   "school_or_district_id": "050 All Schools",
   "school_or_district_name": "050 Haida Gwaii All Schools"
-}, {
-  "school_or_district_id": "050 Independent Schools",
-  "school_or_district_name": "050 Haida Gwaii Independent Schools"
 }, {
   "school_or_district_id": "050 Public Schools",
   "school_or_district_name": "050 Haida Gwaii Public Schools"
@@ -251,17 +186,11 @@
   "school_or_district_id": "052 All Schools",
   "school_or_district_name": "052 Prince Rupert All Schools"
 }, {
-  "school_or_district_id": "052 Independent Schools",
-  "school_or_district_name": "052 Prince Rupert Independent Schools"
-}, {
   "school_or_district_id": "052 Public Schools",
   "school_or_district_name": "052 Prince Rupert Public Schools"
 }, {
   "school_or_district_id": "053 All Schools",
   "school_or_district_name": "053 Okanagan Similkameen All Schools"
-}, {
-  "school_or_district_id": "053 Independent Schools",
-  "school_or_district_name": "053 Okanagan Similkameen Independent Schools"
 }, {
   "school_or_district_id": "053 Public Schools",
   "school_or_district_name": "053 Okanagan Similkameen Public Schools"
@@ -269,17 +198,11 @@
   "school_or_district_id": "054 All Schools",
   "school_or_district_name": "054 Bulkley Valley All Schools"
 }, {
-  "school_or_district_id": "054 Independent Schools",
-  "school_or_district_name": "054 Bulkley Valley Independent Schools"
-}, {
   "school_or_district_id": "054 Public Schools",
   "school_or_district_name": "054 Bulkley Valley Public Schools"
 }, {
   "school_or_district_id": "057 All Schools",
   "school_or_district_name": "057 Prince George All Schools"
-}, {
-  "school_or_district_id": "057 Independent Schools",
-  "school_or_district_name": "057 Prince George Independent Schools"
 }, {
   "school_or_district_id": "057 Public Schools",
   "school_or_district_name": "057 Prince George Public Schools"
@@ -287,17 +210,11 @@
   "school_or_district_id": "058 All Schools",
   "school_or_district_name": "058 Nicola-Similkameen All Schools"
 }, {
-  "school_or_district_id": "058 Independent Schools",
-  "school_or_district_name": "058 Nicola-Similkameen Independent Schools"
-}, {
   "school_or_district_id": "058 Public Schools",
   "school_or_district_name": "058 Nicola-Similkameen Public Schools"
 }, {
   "school_or_district_id": "059 All Schools",
   "school_or_district_name": "059 Peace River South All Schools"
-}, {
-  "school_or_district_id": "059 Independent Schools",
-  "school_or_district_name": "059 Peace River South Independent Schools"
 }, {
   "school_or_district_id": "059 Public Schools",
   "school_or_district_name": "059 Peace River South Public Schools"
@@ -305,17 +222,11 @@
   "school_or_district_id": "060 All Schools",
   "school_or_district_name": "060 Peace River North All Schools"
 }, {
-  "school_or_district_id": "060 Independent Schools",
-  "school_or_district_name": "060 Peace River North Independent Schools"
-}, {
   "school_or_district_id": "060 Public Schools",
   "school_or_district_name": "060 Peace River North Public Schools"
 }, {
   "school_or_district_id": "061 All Schools",
   "school_or_district_name": "061 Greater Victoria All Schools"
-}, {
-  "school_or_district_id": "061 Independent Schools",
-  "school_or_district_name": "061 Greater Victoria Independent Schools"
 }, {
   "school_or_district_id": "061 Public Schools",
   "school_or_district_name": "061 Greater Victoria Public Schools"
@@ -323,17 +234,11 @@
   "school_or_district_id": "062 All Schools",
   "school_or_district_name": "062 Sooke All Schools"
 }, {
-  "school_or_district_id": "062 Independent Schools",
-  "school_or_district_name": "062 Sooke Independent Schools"
-}, {
   "school_or_district_id": "062 Public Schools",
   "school_or_district_name": "062 Sooke Public Schools"
 }, {
   "school_or_district_id": "063 All Schools",
   "school_or_district_name": "063 Saanich All Schools"
-}, {
-  "school_or_district_id": "063 Independent Schools",
-  "school_or_district_name": "063 Saanich Independent Schools"
 }, {
   "school_or_district_id": "063 Public Schools",
   "school_or_district_name": "063 Saanich Public Schools"
@@ -341,17 +246,11 @@
   "school_or_district_id": "064 All Schools",
   "school_or_district_name": "064 Gulf Islands All Schools"
 }, {
-  "school_or_district_id": "064 Independent Schools",
-  "school_or_district_name": "064 Gulf Islands Independent Schools"
-}, {
   "school_or_district_id": "064 Public Schools",
   "school_or_district_name": "064 Gulf Islands Public Schools"
 }, {
   "school_or_district_id": "067 All Schools",
   "school_or_district_name": "067 Okanagan Skaha All Schools"
-}, {
-  "school_or_district_id": "067 Independent Schools",
-  "school_or_district_name": "067 Okanagan Skaha Independent Schools"
 }, {
   "school_or_district_id": "067 Public Schools",
   "school_or_district_name": "067 Okanagan Skaha Public Schools"
@@ -359,17 +258,11 @@
   "school_or_district_id": "068 All Schools",
   "school_or_district_name": "068 Nanaimo-Ladysmith All Schools"
 }, {
-  "school_or_district_id": "068 Independent Schools",
-  "school_or_district_name": "068 Nanaimo-Ladysmith Independent Schools"
-}, {
   "school_or_district_id": "068 Public Schools",
   "school_or_district_name": "068 Nanaimo-Ladysmith Public Schools"
 }, {
   "school_or_district_id": "069 All Schools",
   "school_or_district_name": "069 Qualicum All Schools"
-}, {
-  "school_or_district_id": "069 Independent Schools",
-  "school_or_district_name": "069 Qualicum Independent Schools"
 }, {
   "school_or_district_id": "069 Public Schools",
   "school_or_district_name": "069 Qualicum Public Schools"
@@ -377,17 +270,11 @@
   "school_or_district_id": "070 All Schools",
   "school_or_district_name": "070 Pacific Rim All Schools"
 }, {
-  "school_or_district_id": "070 Independent Schools",
-  "school_or_district_name": "070 Pacific Rim Independent Schools"
-}, {
   "school_or_district_id": "070 Public Schools",
   "school_or_district_name": "070 Pacific Rim Public Schools"
 }, {
   "school_or_district_id": "071 All Schools",
   "school_or_district_name": "071 Comox Valley All Schools"
-}, {
-  "school_or_district_id": "071 Independent Schools",
-  "school_or_district_name": "071 Comox Valley Independent Schools"
 }, {
   "school_or_district_id": "071 Public Schools",
   "school_or_district_name": "071 Comox Valley Public Schools"
@@ -395,17 +282,11 @@
   "school_or_district_id": "072 All Schools",
   "school_or_district_name": "072 Campbell River All Schools"
 }, {
-  "school_or_district_id": "072 Independent Schools",
-  "school_or_district_name": "072 Campbell River Independent Schools"
-}, {
   "school_or_district_id": "072 Public Schools",
   "school_or_district_name": "072 Campbell River Public Schools"
 }, {
   "school_or_district_id": "073 All Schools",
   "school_or_district_name": "073 Kamloops-Thompson All Schools"
-}, {
-  "school_or_district_id": "073 Independent Schools",
-  "school_or_district_name": "073 Kamloops-Thompson Independent Schools"
 }, {
   "school_or_district_id": "073 Public Schools",
   "school_or_district_name": "073 Kamloops-Thompson Public Schools"
@@ -413,17 +294,11 @@
   "school_or_district_id": "074 All Schools",
   "school_or_district_name": "074 Gold Trail All Schools"
 }, {
-  "school_or_district_id": "074 Independent Schools",
-  "school_or_district_name": "074 Gold Trail Independent Schools"
-}, {
   "school_or_district_id": "074 Public Schools",
   "school_or_district_name": "074 Gold Trail Public Schools"
 }, {
   "school_or_district_id": "075 All Schools",
   "school_or_district_name": "075 Mission All Schools"
-}, {
-  "school_or_district_id": "075 Independent Schools",
-  "school_or_district_name": "075 Mission Independent Schools"
 }, {
   "school_or_district_id": "075 Public Schools",
   "school_or_district_name": "075 Mission Public Schools"
@@ -431,17 +306,11 @@
   "school_or_district_id": "078 All Schools",
   "school_or_district_name": "078 Fraser-Cascade All Schools"
 }, {
-  "school_or_district_id": "078 Independent Schools",
-  "school_or_district_name": "078 Fraser-Cascade Independent Schools"
-}, {
   "school_or_district_id": "078 Public Schools",
   "school_or_district_name": "078 Fraser-Cascade Public Schools"
 }, {
   "school_or_district_id": "079 All Schools",
   "school_or_district_name": "079 Cowichan Valley All Schools"
-}, {
-  "school_or_district_id": "079 Independent Schools",
-  "school_or_district_name": "079 Cowichan Valley Independent Schools"
 }, {
   "school_or_district_id": "079 Public Schools",
   "school_or_district_name": "079 Cowichan Valley Public Schools"
@@ -449,26 +318,17 @@
   "school_or_district_id": "081 All Schools",
   "school_or_district_name": "081 Fort Nelson All Schools"
 }, {
-  "school_or_district_id": "081 Independent Schools",
-  "school_or_district_name": "081 Fort Nelson Independent Schools"
-}, {
   "school_or_district_id": "081 Public Schools",
   "school_or_district_name": "081 Fort Nelson Public Schools"
 }, {
   "school_or_district_id": "082 All Schools",
   "school_or_district_name": "082 Coast Mountains All Schools"
 }, {
-  "school_or_district_id": "082 Independent Schools",
-  "school_or_district_name": "082 Coast Mountains Independent Schools"
-}, {
   "school_or_district_id": "082 Public Schools",
   "school_or_district_name": "082 Coast Mountains Public Schools"
 }, {
   "school_or_district_id": "083 All Schools",
   "school_or_district_name": "083 North Okanagan-Shuswap All Schools"
-}, {
-  "school_or_district_id": "083 Independent Schools",
-  "school_or_district_name": "083 North Okanagan-Shuswap Independent Schools"
 }, {
   "school_or_district_id": "083 Public Schools",
   "school_or_district_name": "083 North Okanagan-Shuswap Public Schools"
@@ -482,26 +342,17 @@
   "school_or_district_id": "085 All Schools",
   "school_or_district_name": "085 Vancouver Island North All Schools"
 }, {
-  "school_or_district_id": "085 Independent Schools",
-  "school_or_district_name": "085 Vancouver Island North Independent Schools"
-}, {
   "school_or_district_id": "085 Public Schools",
   "school_or_district_name": "085 Vancouver Island North Public Schools"
 }, {
   "school_or_district_id": "087 All Schools",
   "school_or_district_name": "087 Stikine All Schools"
 }, {
-  "school_or_district_id": "087 Independent Schools",
-  "school_or_district_name": "087 Stikine Independent Schools"
-}, {
   "school_or_district_id": "087 Public Schools",
   "school_or_district_name": "087 Stikine Public Schools"
 }, {
   "school_or_district_id": "091 All Schools",
   "school_or_district_name": "091 Nechako Lakes All Schools"
-}, {
-  "school_or_district_id": "091 Independent Schools",
-  "school_or_district_name": "091 Nechako Lakes Independent Schools"
 }, {
   "school_or_district_id": "091 Public Schools",
   "school_or_district_name": "091 Nechako Lakes Public Schools"
@@ -517,16 +368,5 @@
 }, {
   "school_or_district_id": "093 Public Schools",
   "school_or_district_name": "093 Conseil scolaire francophone Public Schools"
-}, {
-  "school_or_district_id": "All External Schools",
-  "school_or_district_name": "All External Schools"
-}, {
-  "school_or_district_id": "All Independent Schools",
-  "school_or_district_name": "All Independent Schools"
-}, {
-  "school_or_district_id": "All Public Schools",
-  "school_or_district_name": "All Public Schools"
-}, {
-  "school_or_district_id": "All Schools",
-  "school_or_district_name": "All Schools"
-}]
+}
+]

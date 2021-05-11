@@ -175,6 +175,23 @@
           <b-tab v-if="bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE">
             <b-table striped hover sortBy="theme" :items="this.bConstructedResponses"
               :fields="bConstructedResponsesFields">
+                <template v-slot:cell(num_of_score_0)="{ item }">
+                  {{item.num_of_score_0}} ({{item.percent_score_0}})
+                </template>
+                <template v-slot:cell(num_of_score_1)="{ item }">
+                  {{item.num_of_score_1}} ({{item.percent_score_1}})
+                </template>
+                <template v-slot:cell(num_of_score_2)="{ item }">
+                  {{item.num_of_score_2}} ({{item.percent_score_2}})
+                </template>
+                <template v-slot:cell(num_of_score_3)="{ item }">
+                  {{item.num_of_score_3}} ({{item.percent_score_3}})
+                </template>                                        
+                <template v-slot:cell(num_of_score_4)="{ item }">
+                  {{item.num_of_score_4}} ({{item.percent_score_4}})
+                </template>                                                
+            
+
             </b-table>
           </b-tab>
           <b-tab v-if="!bConstructedResponses.length" title="B: CONSTRUCTED RESPONSE">
@@ -244,14 +261,14 @@
         aSelectedResponses: {},
         bConstructedResponsesFields: [{
             key: 'content',
-            label: 'CONTENT	ITEM #',
+            label: 'CONTENT',
           }, {
             key: 'theme',
             label: 'THEME',
           },
           {
             key: 'item',
-            label: 'ITEM',
+            label: 'ITEM #',
           },
           {
             key: 'writers',
@@ -376,11 +393,11 @@
             value: 'all'
           },
           {
-            text: 'Yes',
+            text: 'Francophone',
             value: 'Yes'
           },
           {
-            text: 'No',
+            text: 'Non-Francophone',
             value: 'No'
           },
         ],
@@ -390,11 +407,11 @@
             value: 'all'
           },
           {
-            text: 'Yes',
-            value: 'Yes'
+            text: 'French Immersion',
+            value: 'Non French'
           },
           {
-            text: 'No',
+            text: 'Non-French Immersion',
             value: 'No'
           },
         ],
@@ -404,11 +421,11 @@
             value: 'all'
           },
           {
-            text: 'Yes',
+            text: 'ELL',
             value: 'Yes'
           },
           {
-            text: 'No',
+            text: 'Non-ELL',
             value: 'No'
           },
         ],
@@ -418,11 +435,11 @@
             value: 'all'
           },
           {
-            text: 'Yes',
+            text: 'Indigenious',
             value: 'Yes'
           },
           {
-            text: 'No',
+            text: 'Non-indigenious',
             value: 'No'
           },
         ],
