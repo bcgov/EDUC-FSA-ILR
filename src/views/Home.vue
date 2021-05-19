@@ -27,12 +27,12 @@
             <th class="p-1">Gender</th>
             <th class="p-1">Francophone</th>
             <th class="p-1">French Immersion</th>
-            <th class="p-1">English Language Learners</th>
+            <th class="p-1">English Language Learners (ELL)</th>
             <th class="p-1">Indigenous</th>
           </tr>
           <tr>
 
-            <td class="p-1">
+            <td class="p-1" style="width:100px">
               <select v-model="year" class="form-control" @change="search">
                 <option v-for="option in yearOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -41,7 +41,7 @@
 
             </td>
 
-            <td class="p-1">
+            <td class="p-1" style="width:75px">
               <select v-model="grade" class="form-control" @change="search">
                 <option v-for="option in gradeOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -50,7 +50,7 @@
             </td>
 
 
-            <td class="p-1">
+            <td class="p-1" style="width:150px">
               <select v-model="subject" class="form-control" @change="search">
                 <option v-for="option in subjectOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -58,7 +58,7 @@
               </select>
             </td>
 
-            <td class="p-1">
+            <td class="p-1" style="width:100px">
               <select v-model="examLanguage" class="form-control" @change="search">
                 <option v-for="option in examLanguageOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
@@ -364,11 +364,11 @@
         ],
         examLanguage: "English",
         examLanguageOptions: [{
-            text: 'English',
+            text: 'EN',
             value: 'English'
           },
           {
-            text: 'French',
+            text: 'FR',
             value: 'French'
           },
         ],
@@ -463,21 +463,18 @@
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.aSelectedResponses = response.data;
           this.loading = false;
-          console.log(this.aSelectedResponses);
         });
         ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
           this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.bConstructedResponses = response.data;
           this.loading = false;
-          console.log(this.bConstructedResponses);
         });
         ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
           this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.cCognitiveResponses = response.data;
           this.loading = false;
-          console.log(this.cCognitiveResponses);
         });
 
       },
