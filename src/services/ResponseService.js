@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 var apiClient = axios.create({
-    baseURL: "https://test.studentsuccess.gov.bc.ca",
+    baseURL: "",
 })
 
 
 export default {
     getASelectedResponse(school,year,grade,subject,examLanguage,gender,francophone,frenchImmersion,ell,indigenous) {
-        ('/selected-response/'     
+        console.log('/selected-response/'     
             + school + "/" 
             + year + "/"
             + grade + "/" 

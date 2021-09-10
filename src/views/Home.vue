@@ -324,7 +324,7 @@
         cCognitiveResponses: {},
         school: 'All Public Schools',
         schoolList: SchoolsList,
-        year: '2019-2020',
+        year: '2020-2021',
         yearOptions: [{
             text: '2017',
             value: '2017-2018'
@@ -336,7 +336,11 @@
           {
             text: '2019',
             value: '2019-2020'
-          }
+          },
+          {
+            text: '2020',
+            value: '2020-2021'
+          }          
         ],
         grade: "04",
         gradeOptions: [{
@@ -408,7 +412,7 @@
           },
           {
             text: 'French Immersion',
-            value: 'Non French'
+            value: 'Yes'
           },
           {
             text: 'Non-French Immersion',
@@ -435,11 +439,11 @@
             value: 'all'
           },
           {
-            text: 'Indigenious',
+            text: 'Indigenous',
             value: 'Yes'
           },
           {
-            text: 'Non-indigenious',
+            text: 'Non-indigenous',
             value: 'No'
           },
         ],

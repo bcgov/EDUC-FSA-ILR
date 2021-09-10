@@ -65,8 +65,9 @@
            <li>
             <a href="/all/cities" class="nav-link" >Cities</a>
           </li>
+          <li><a href="/reporting" class="nav-link">Research and analysis</a></li>
           <li><a href="/glossary" class="nav-link">Glossary</a></li>
-          <li><a href="/reporting" class="nav-link">Priority Reports</a></li>
+          
         </ul> 
       </div>
     </nav>
