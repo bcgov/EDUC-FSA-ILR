@@ -6,6 +6,12 @@ var apiClient = axios.create({
 
 
 export default {
+    getSchoolOptions(district){
+        return apiClient.get('/fsa-school-districtsID/' + district);
+    },
+    getDistrictOptions(){
+        return apiClient.get('/fsa-school-districts-agg');
+    },
     getASelectedResponse(school,year,grade,subject,examLanguage,gender,francophone,frenchImmersion,ell,indigenous) {
         console.log('/selected-response/'     
             + school + "/" 

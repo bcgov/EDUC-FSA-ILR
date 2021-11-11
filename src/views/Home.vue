@@ -2,23 +2,39 @@
   <div class="container">
     <h1>Foundation Skills Assessment Reports</h1>
     <form action="" method="GET" @submit.prevent="search">
-      <span><strong class="p-1">Select a Report</strong></span>
-      <b-form-input list="my-list-id" @change="saveSelectionAndReset" @focus="clearSchool" v-model="school">
-      </b-form-input>
-
+    
+            <div class="row">
+    <div class="col-6">
+        <span><strong class="p-1">Select a Report</strong></span>
+      <select class="form-control" v-model="districtOption">
+        <optgroup label="Select a report">
+        <option value="All Public Schools">All Public Schools</option>
+        <option value="All External Schools">All External Schools</option>
+        <option value="All Independent Schools">All Independent Schools</option>
+        <option value="All Schools">All Schools</option>
+        </optgroup>
+        <optgroup label="Select by independent/external school">
+          <option value="Independent Schools">Independent Schools</option>
+          <option value="External Schools">External Schools</option>
+        </optgroup>
+        <optgroup label="Select a public school">
+        <option v-for="district in districtOptionList.data" v-bind:key="district.school_or_district_id"
+                      :value="district.school_or_district_id">{{ district.school_or_district_name }}</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="col-6" v-if="districtOption && districtOption != 'All Schools' && districtOption != 'All Public Schools' && districtOption != 'All External Schools' && districtOption != 'All Independent Schools'">
+      <span><strong class="p-1">Select a School</strong></span>
+      <select class="form-control" v-model="schoolOption"  @change="search">
+         
+        <option  v-for="option in schoolList.data" :value="option.school_or_district_id" :key="option.school_or_district_id">{{option.school_or_district_name}}</option>
+      </select>
+    </div>  
+    </div>
+          
       <table class="">
         <tbody>
 
-          <tr>
-            <td class="my-3">
-              <datalist id="my-list-id">
-                <option>Select a Report</option>
-                <option v-for="school in schoolList" v-bind:key="school.school_or_district_id"
-                  :value="school.school_or_district_id">{{ school.school_or_district_name }}</option>
-              </datalist>
-              <p class="my-3"></p>
-            </td>
-          </tr>
           <tr>
             <th class="p-1">Year</th>
             <th class="p-1">Grade</th>
@@ -110,7 +126,7 @@
     <div>
       <h2 class="search-filters border-bottom pt-5">
         <span v-if="school">
-          {{school}}
+          {{schoolName}}
         </span>
       </h2>
       <h4 class="header">
@@ -216,12 +232,40 @@
   </div>
 </template>
 <script>
-  import SchoolsList from "@/services/SchoolService.json";
   import ResponseService from "@/services/ResponseService.js";
   export default {
     name: 'FSA',
+    watch: {
+      // whenever question changes, this function will run
+      districtOption: function () {
+    
+        if(this.districtOption == 'All Public Schools'){
+            this.schoolOption = 'All Public Schools'
+            this.search();
+        }else if(this.districtOption == 'All External Schools'){
+            this.schoolOption = 'All External Schools'
+            this.search();
+        }else if(this.districtOption == 'All Independent Schools'){
+            this.schoolOption = 'All Independent Schools'
+            this.search();                    
+        }else if(this.districtOption == 'All Schools'){
+            this.schoolOption = 'All Schools'
+            this.search();
+        }else{
+          ResponseService.getSchoolOptions(this.districtOption).then(response => (this.schoolList = response));
+        }       
+      }
+    },
     data() {
+
+
+      
       return {
+        districtOption: 'All Public Schools',
+        districtOptionList: null,
+        schoolOption: 'All Public Schools',
+        school: 'All Public Schools',
+        schoolList: "",
         searchMessage: "",
         aSelectedResponsesFields: [{
             key: 'content',
@@ -322,8 +366,7 @@
           }
         ],
         cCognitiveResponses: {},
-        school: 'All Public Schools',
-        schoolList: SchoolsList,
+    
         year: '2020-2021',
         yearOptions: [{
             text: '2017',
@@ -453,6 +496,7 @@
     },
     created() {
       this.search();
+      ResponseService.getDistrictOptions().then(response => (this.districtOptionList = response))
     },
     methods: {
 
@@ -463,23 +507,42 @@
         this.bConstructedResponses = {};
         this.cSelectedResponse = {};
         this.loading = true;
+        this.school =  this.schoolOption;
+        this.schoolName = "";
         ResponseService.getASelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.aSelectedResponses = response.data;
+          if(this.aSelectedResponses[0].school){
+            this.schoolName = this.aSelectedResponses[0].school;
+          }else if(this.aSelectedResponses[0].school_or_district){
+            this.schoolName = this.aSelectedResponses[0].school_or_district;
+          }
           this.loading = false;
         });
         ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
           this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.bConstructedResponses = response.data;
+          if(this.bConstructedResponses[0].school){
+            this.schoolName = this.bConstructedResponses[0].school;
+          }else if(this.bConstructedResponses[0].school_or_district){
+            this.schoolName = this.bConstructedResponses[0].school_or_district;
+          }
           this.loading = false;
         });
         ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
           this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
           this.cCognitiveResponses = response.data;
+          if(this.cCognitiveResponses[0].school){
+            this.schoolName = this.cCognitiveResponses[0].school_or_district;
+          }
           this.loading = false;
         });
+
+        //set the schoolName
+
+        
 
       },
       resetSearch: function () {
@@ -488,6 +551,8 @@
         this.bConstructedResponses = {};
         this.cSelectedResponse = {};
         this.school = "All Public Schools";
+        this.districtOption =  'All Public Schools',
+        this.school = 'All Public Schools',
         this.year = "2019-2020";
         this.grade = "04";
         this.subject = "Reading";
@@ -498,6 +563,7 @@
         this.ell = "all";
         this.indigenous = 'all';
         this.saveSelectionAndReset();
+        this.schoolName = "";
 
       },
       clearSchool: function () {
