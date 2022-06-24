@@ -26,8 +26,7 @@
     <div class="col-6" v-if="districtOption && districtOption != 'All Schools' && districtOption != 'All Public Schools' && districtOption != 'All External Schools' && districtOption != 'All Independent Schools'">
       <span><strong class="p-1">Select a School</strong></span>
       <select class="form-control" v-model="schoolOption"  @change="search">
-         
-        <option  v-for="option in schoolList.data" :value="option.school_or_district_id" :key="option.school_or_district_id">{{option.school_or_district_name}}</option>
+        <option  v-for="option in sortedSchools" :value="option.school_or_district_id" :key="option.school_or_district_id">{{option.school_or_district_name}}</option>
       </select>
     </div>  
     </div>
@@ -37,7 +36,7 @@
 
           <tr>
             <th class="p-1">Year</th>
-            <th class="p-1">Grade</th>
+            <th class="p-1">Gr</th>
             <th class="p-1">Subject</th>
             <th class="p-1">Language</th>
             <th class="p-1">Gender</th>
@@ -48,8 +47,8 @@
           </tr>
           <tr>
 
-            <td class="p-1" style="width:100px">
-              <select v-model="year" class="form-control" @change="search">
+            <td class="p-1" style="width:140px">
+              <select v-model="year" class="form-control">
                 <option v-for="option in yearOptions" v-bind:value="option.value" v-bind:key="option.text">
                   {{ option.text }}
                 </option>
@@ -72,6 +71,7 @@
                   {{ option.text }}
                 </option>
               </select>
+
             </td>
 
             <td class="p-1" style="width:100px">
@@ -237,6 +237,41 @@
     name: 'FSA',
     watch: {
       // whenever question changes, this function will run
+      year: function () {
+        if(this.year == '2017-2018' || this.year == '2018-2019' || this.year == '2019-2020' || this.year == '2020-2021'){
+           
+            this.subjectOptions = [{
+              text: 'Reading',
+              value: 'Reading'
+            },
+            {
+              text: 'Numeracy',
+              value: 'Numeracy'
+            },
+            {
+              text: 'Writing',
+              value: 'Writing'
+            }
+          ]
+          this.subject = "Reading"
+        
+        }else {
+
+          this.subjectOptions = [{
+              text: 'Literacy',
+              value: 'Literacy'
+            },
+            {
+              text: 'Numeracy',
+              value: 'Numeracy'
+            }]
+            this.subject = "Literacy"
+        }
+        this.$nextTick(() => {
+          this.search();
+        });
+      },
+
       districtOption: function () {
     
         if(this.districtOption == 'All Public Schools'){
@@ -367,23 +402,27 @@
         ],
         cCognitiveResponses: {},
     
-        year: '2020-2021',
+        year: '2021-2022',
         yearOptions: [{
-            text: '2017',
+            text: '2017-2018',
             value: '2017-2018'
           },
           {
-            text: '2018',
+            text: '2018-2019',
             value: '2018-2019'
           },
           {
-            text: '2019',
+            text: '2019-2020',
             value: '2019-2020'
           },
           {
-            text: '2020',
+            text: '2020-2021',
             value: '2020-2021'
-          }          
+          },
+          {
+            text: '2021-2022',
+            value: '2021-2022'
+          }            
         ],
         grade: "04",
         gradeOptions: [{
@@ -395,19 +434,16 @@
             value: '07'
           },
         ],
-        subject: "Reading",
-        subjectOptions: [{
-            text: 'Reading',
-            value: 'Reading'
+        subject: "Literacy",
+        subjectOptions: [
+          {
+            text: 'Literacy',
+            value: 'Literacy'
           },
           {
             text: 'Numeracy',
             value: 'Numeracy'
-          },
-          {
-            text: 'Writing',
-            value: 'Writing'
-          },
+          }
         ],
         examLanguage: "English",
         examLanguageOptions: [{
@@ -491,12 +527,29 @@
           },
         ],
         loading: false,
+        search2: '',
       }
 
     },
     created() {
       this.search();
+
       ResponseService.getDistrictOptions().then(response => (this.districtOptionList = response))
+    },
+    computed: {
+        sortedSchools() {
+          if(this.schoolList){
+            return this.schoolList.data
+              .filter(school => school.school_or_district_name.toLowerCase().match(this.search2.toLowerCase()))
+              .sort((a, b) => {
+                  if (a.school_or_district_name < b.school_or_district_name)
+                      return -1;
+                  if (a.school_or_district_name > b.school_or_district_name)
+                      return 1;
+                  return 0;
+            });
+          }else return []
+        }
     },
     methods: {
 
@@ -509,35 +562,46 @@
         this.loading = true;
         this.school =  this.schoolOption;
         this.schoolName = "";
+        //update the subject if year is 2017 - 2020
+
         ResponseService.getASelectedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage, this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
-          this.aSelectedResponses = response.data;
-          if(this.aSelectedResponses[0].school){
-            this.schoolName = this.aSelectedResponses[0].school;
-          }else if(this.aSelectedResponses[0].school_or_district){
-            this.schoolName = this.aSelectedResponses[0].school_or_district;
-          }
-          this.loading = false;
-        });
+            if(response.data.length){
+              this.aSelectedResponses = response.data;
+              if(this.aSelectedResponses[0].school){
+                this.schoolName = this.aSelectedResponses[0].school;
+              }else if(this.aSelectedResponses[0].school_or_district){
+                this.schoolName = this.aSelectedResponses[0].school_or_district;
+              }
+            }
+            this.loading = false;
+          
+        })
+        
         ResponseService.getBConstructedResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
           this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
-          this.bConstructedResponses = response.data;
-          if(this.bConstructedResponses[0].school){
-            this.schoolName = this.bConstructedResponses[0].school;
-          }else if(this.bConstructedResponses[0].school_or_district){
-            this.schoolName = this.bConstructedResponses[0].school_or_district;
-          }
-          this.loading = false;
+            if(response.data.length){
+              this.bConstructedResponses = response.data;
+              if(this.bConstructedResponses[0].school){
+                this.schoolName = this.bConstructedResponses[0].school;
+              }else if(this.bConstructedResponses[0].school_or_district){
+                this.schoolName = this.bConstructedResponses[0].school_or_district;
+              }
+              this.loading = false;
+            }
+          
         });
         ResponseService.getCCognitiveResponse(this.school, this.year, this.grade, this.subject, this.examLanguage,
           this
           .gender, this.francophone, this.frenchImmersion, this.ell, this.indigenous).then((response) => {
-          this.cCognitiveResponses = response.data;
-          if(this.cCognitiveResponses[0].school){
-            this.schoolName = this.cCognitiveResponses[0].school_or_district;
-          }
-          this.loading = false;
+            if(response.data.length){
+              this.cCognitiveResponses = response.data;
+              if(this.cCognitiveResponses[0].school){
+                this.schoolName = this.cCognitiveResponses[0].school_or_district;
+              }
+            }
+            this.loading = false;
         });
 
         //set the schoolName
@@ -553,9 +617,9 @@
         this.school = "All Public Schools";
         this.districtOption =  'All Public Schools',
         this.school = 'All Public Schools',
-        this.year = "2019-2020";
+        this.year = "2021-2022";
         this.grade = "04";
-        this.subject = "Reading";
+        this.subject = "Literacy";
         this.examLanguage = "English";
         this.gender = "all";
         this.francophone = "all";

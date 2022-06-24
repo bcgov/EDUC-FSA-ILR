@@ -4,7 +4,7 @@ var apiClient = axios.create({
     baseURL: "",
 })
 
-
+/* eslint-disable */
 export default {
     getSchoolOptions(district){
         return apiClient.get('/fsa-school-districtsID/' + district);
