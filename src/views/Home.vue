@@ -402,7 +402,7 @@
         ],
         cCognitiveResponses: {},
     
-        year: '2021-2022',
+        year: '2022-2023',
         yearOptions: [{
             text: '2017-2018',
             value: '2017-2018'
@@ -422,7 +422,11 @@
           {
             text: '2021-2022',
             value: '2021-2022'
-          }            
+          },
+          {
+            text: '2022-2023',
+            value: '2022-2023'
+          }                         
         ],
         grade: "04",
         gradeOptions: [{
